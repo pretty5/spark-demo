@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/kafkaApi/kafkaApi.iml" filepath="$PROJECT_DIR$/kafkaApi/kafkaApi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparKstreaming/sparKstreaming.iml" filepath="$PROJECT_DIR$/sparKstreaming/sparKstreaming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spark-demo.iml" filepath="$PROJECT_DIR$/spark-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparkcore/sparkcore.iml" filepath="$PROJECT_DIR$/sparkcore/sparkcore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sparksql/sparksql.iml" filepath="$PROJECT_DIR$/sparksql/sparksql.iml" />
+    </modules>
+  </component>
+</project>

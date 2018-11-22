@@ -1,0 +1,53 @@
+/*
+*@ClassName:KafkaConsumerDemo
+ @Description:TODO
+ @Author:
+ @Date:2018/11/20 9:46 
+ @Version:v1.0
+*/
+
+import java.util.Arrays;
+import java.util.Properties;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+
+public class KafkaConsumerDemo {
+    public static void main(String[] args) {
+        Properties properties = new Properties();
+
+        properties.put("bootstrap.servers", "localhost:9092");
+
+        properties.put("group.id", "qwea");
+
+        properties.put("enable.auto.commit", "false");
+
+        properties.put("auto.commit.interval.ms", "1000");
+
+        properties.put("auto.offset.reset", "earliest");//
+
+        properties.put("session.timeout.ms", "30000");
+
+        properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
+        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
+        KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer(properties);
+
+        kafkaConsumer.subscribe(Arrays.asList("t2"));
+
+        while (true) {
+            ConsumerRecords<String, String> records = kafkaConsumer.poll(100);
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("offset = %d, value = %s", record.offset(), record.value());
+                System.out.printf("partition = %d, key = %s", record.partition(), record.key());
+                System.out.printf("time = %d, topic = %s", record.timestamp(), record.topic());
+                System.out.println();
+            }
+            kafkaConsumer.commitSync();
+        }
+
+    }
+}
+
